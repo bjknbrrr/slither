@@ -7,10 +7,22 @@ jobs:
       - run: pipenv install
       - run: snyk test --file=setup.py
       - uses: actions/checkout@master
+#      -name: Python package
+#on: push
+#jobs:
+#  security:
+#    runs-on: ubuntu-latest
+#    steps:
+#    - uses: actions/checkout@v1
+#    - name: Set up Python ${{ matrix.python-version }}
+#     uses: actions/setup-python@v1
+#      with:
+#        python-version: ${{ matrix.python-version }}
+#    - name: Install dependencies
+#      run: |
+#        pip install -r requirements.txt
       - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions/python@master
-        with:
-          python-version: ${{ matrix.python-version }}
+        uses: snyk/actions/python@master     
         continue-on-error: true # To make sure that SARIF upload gets called
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
