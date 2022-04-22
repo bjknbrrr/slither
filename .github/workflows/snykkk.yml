@@ -52,8 +52,8 @@ jobs:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         run: |
           sudo apt-get install -y libkrb5-dev
-          pip install -r h2o-py/requirements.txt            
-          snyk test -d --fail-on=all --file=h2o-py/requirements.txt --package-manager=pip --command=python3 --skip-unresolved   
+          pip install -r slither/requirements.txt            
+          snyk test -d --fail-on=all --file=slither/requirements.txt --package-manager=pip --command=python3 --skip-unresolved   
 
       - uses: actions/setup-node@v1
         with:
